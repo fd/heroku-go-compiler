@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e
+
+GO_VERSION="1.5.2"
+GO_SRC_SHA="cae87ed095e8d94a81871281d35da7829bd1234e"
+
+BUILD_DIR="$1"
+CACHE_DIR="$2"
+ENV_DIR="$3"
+
+GO_SRC_URL="https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz"
+GOS_DIR="${BUILD_DIR}/go"
+GO_TAR="${CACHE_DIR}/go${GO_VERSION}.linux-amd64.tar.gz"
+GO_DST="${GOS_DIR}/${GO_VERSION}"
+GO_TMP_DST="${CACHE_DIR}"
+
+
+if [ ! -f "${GO_TAR}" ]; then
+  rm -f "${GO_TAR}"
+  curl -L "${GO_SRC_URL}" > "${GO_TAR}"
+  echo "${GO_SRC_SHA} ${GO_TAR}" | sha1sum --check --status  -
+fi
+
+mkdir -p "${GOS_DIR}"
+tar -C "${GO_TMP_DST}" -xzf "${GO_TAR}"
+mv "${GO_TMP_DST}/go" "${GO_DST}"
+
+echo "/app/go/${GO_VERSION}" > "${ENV_DIR}/GO_${GO_VERSION}"
