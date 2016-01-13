@@ -10,7 +10,7 @@ CACHE_DIR="$2"
 ENV_DIR="$3"
 
 GO_SRC_URL="https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz"
-GOS_DIR="${BUILD_DIR}/go"
+GOS_DIR="${BUILD_DIR}/go-env"
 GO_TAR="${CACHE_DIR}/go${GO_VERSION}.linux-amd64.tar.gz"
 GO_DST="${GOS_DIR}/${GO_VERSION}"
 GO_TMP_DST="${CACHE_DIR}/go-env"
