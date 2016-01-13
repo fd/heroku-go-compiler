@@ -25,5 +25,6 @@ fi
 mkdir -p "${GOS_DIR}"
 tar -C "${GO_TMP_DST}" -xzf "${GO_TAR}"
 mv "${GO_TMP_DST}/go" "${GO_DST}"
+rm -rf "${GO_TMP_DST}/go"
 
 echo "/app/go/${GO_VERSION}" > "${ENV_DIR}/GO_${GO_VERSION}"
