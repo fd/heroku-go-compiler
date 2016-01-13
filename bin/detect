@@ -1,2 +1,3 @@
 #!/bin/sh
+echo "Go build env"
 exit 0
