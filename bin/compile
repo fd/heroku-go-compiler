@@ -29,4 +29,5 @@ mv "${GO_TMP_DST}/go" "${GO_DST}"
 rm -rf "${GO_TMP_DST}"
 
 mkdir -p "${BUILD_DIR}/.profile.d"
-echo "export GO_${GO_VERSION}=/app/_go/${GO_VERSION}" > "${BUILD_DIR}/.profile.d/go${GO_VERSION}.sh"
+GO_ENV_VAR="$(echo "GO_${GO_VERSION}" | sed 's|[.]||g')"
+echo "export ${GO_ENV_VAR}=/app/_go/${GO_VERSION}" > "${BUILD_DIR}/.profile.d/go${GO_VERSION}.sh"
