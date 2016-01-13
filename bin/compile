@@ -28,4 +28,5 @@ tar -C "${GO_TMP_DST}" -xzf "${GO_TAR}"
 mv "${GO_TMP_DST}/go" "${GO_DST}"
 rm -rf "${GO_TMP_DST}"
 
-echo "/app/_go/${GO_VERSION}" > "${ENV_DIR}/GO_${GO_VERSION}"
+mkdir -p "${BUILD_DIR}/.profile.d"
+echo "export GO_${GO_VERSION}=/app/_go/${GO_VERSION}" > "${BUILD_DIR}/.profile.d/go${GO_VERSION}.sh"
