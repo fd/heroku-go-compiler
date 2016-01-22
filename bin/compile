@@ -2,8 +2,8 @@
 
 set -e
 
-GO_VERSION="1.5.2"
-GO_SRC_SHA="cae87ed095e8d94a81871281d35da7829bd1234e"
+GO_VERSION="1.5.3"
+GO_SRC_SHA="43afe0c5017e502630b1aea4d44b8a7f059bf60d7f29dfd58db454d4e4e0ae53"
 
 BUILD_DIR="$1"
 CACHE_DIR="$2"
@@ -19,7 +19,7 @@ GO_TMP_DST="${CACHE_DIR}/go-env"
 if [ ! -f "${GO_TAR}" ]; then
   rm -f "${GO_TAR}"
   curl -L "${GO_SRC_URL}" > "${GO_TAR}"
-  echo "${GO_SRC_SHA} ${GO_TAR}" | sha1sum --check --status  -
+  echo "${GO_SRC_SHA} ${GO_TAR}" | shasum -a 256 --check --status  -
 fi
 
 mkdir -p "${GOS_DIR}"
